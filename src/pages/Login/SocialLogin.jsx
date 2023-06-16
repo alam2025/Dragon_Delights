@@ -2,12 +2,21 @@ import React from 'react';
 import { FcGoogle } from "react-icons/fc";
 import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 const SocialLogin = () => {
       const navigate = useNavigate()
       const { googleSignIn ,gitHubSignIn} = useAuth()
       const handleGoogleLogin = () => {
             googleSignIn()
-                  .then(() => navigate('/'))
+                  .then(() => {
+                        Swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Your work has been saved',
+                              showConfirmButton: false,
+                              timer: 1500
+                        })
+                        navigate('/')})
       }
       return (
             <>

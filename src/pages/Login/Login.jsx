@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import SocialLogin from './SocialLogin';
+import Swal from 'sweetalert2';
 const Login = () => {
       const navigate = useNavigate()
 
@@ -16,6 +17,13 @@ const Login = () => {
             setError('')
             logIn(data.email, data.password)
                   .then(() => {
+                        Swal.fire({
+                              position: 'top-end',
+                              icon: 'success',
+                              title: 'Your work has been saved',
+                              showConfirmButton: false,
+                              timer: 1500
+                        })
                         navigate('/')
                   })
                   .catch(error => setError(error.message))
