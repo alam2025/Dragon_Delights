@@ -11,6 +11,9 @@ const Login = () => {
       const [error, setError] = useState('');
       const { register, handleSubmit, formState: { errors }, reset } = useForm();
       const { user, logIn } = useAuth();
+      const location = useLocation();
+
+      const from= location.state?.from?.pathname || '/'
 
 
       const onSubmit = data => {
@@ -24,7 +27,7 @@ const Login = () => {
                               showConfirmButton: false,
                               timer: 1500
                         })
-                        navigate('/')
+                        navigate(from ,{replace:true})
                   })
                   .catch(error => setError(error.message))
 

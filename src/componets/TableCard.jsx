@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { addToDb, getShoppingCart } from '../utilities/fakedb';
 import Swal from 'sweetalert2';
-const TableCard = ({recipe,index }) => {
-      const [isDisabled,setIsDisabled]=useState(false)
+const TableCard = ({ recipe, index }) => {
+      const [isDisabled, setIsDisabled] = useState(false)
       const savedCart = getShoppingCart();
-     let matchItem;
+      let matchItem;
       for (const id in savedCart) {
-            if(recipe.id == id){
-               matchItem=id;
+            if (recipe.id == id) {
+                  matchItem = id;
             }
       }
-     
+
 
       const handleAdd = (recipe) => {
             addToDb(recipe.id)
@@ -61,7 +61,7 @@ const TableCard = ({recipe,index }) => {
                               handleAdd(recipe)
                         }
 
-                        }><AiFillHeart className={`${recipe.id == matchItem ?' text-slate-300':'hover:text-red-500'} `} size={35}></AiFillHeart></button>
+                        }><AiFillHeart className={`${recipe.id == matchItem ? ' text-slate-300' : 'hover:text-red-500'} `} size={35}></AiFillHeart></button>
                   </th>
             </>
       );

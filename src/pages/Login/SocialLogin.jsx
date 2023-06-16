@@ -1,11 +1,13 @@
 import React from 'react';
 import { FcGoogle } from "react-icons/fc";
 import useAuth from '../../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 const SocialLogin = () => {
       const navigate = useNavigate()
-      const { googleSignIn ,gitHubSignIn} = useAuth()
+      const { googleSignIn ,gitHubSignIn} = useAuth();
+      const location =useLocation();
+      const from= location.state?.from?.pathname || '/';
       const handleGoogleLogin = () => {
             googleSignIn()
                   .then(() => {
@@ -16,7 +18,7 @@ const SocialLogin = () => {
                               showConfirmButton: false,
                               timer: 1500
                         })
-                        navigate('/')})
+                        navigate(from ,{replace:true})})
       }
       return (
             <>

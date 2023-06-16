@@ -6,7 +6,7 @@ import Services from './Servises/Services';
 
 const Home = () => {
       return (
-            <div>
+            <div className='md:px-[10%]'>
                   <Banner></Banner>
                   <Services></Services>
                   <ChefSection></ChefSection>

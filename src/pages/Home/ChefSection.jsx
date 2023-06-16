@@ -2,10 +2,16 @@ import React, { useState } from 'react';
 import SectionTitle from '../Shared/SectionTitle';
 import useChefs from '../../hooks/useChefs';
 import ChefCard from '../../componets/chefCard';
+import LoadSpinner from '../Shared/LoadSpinner';
 
 const ChefSection = () => {
       const [isFold, setFold]=useState(false)
-      let [chefs] = useChefs()
+      let [chefs,isLoading] = useChefs()
+      if(isLoading){
+            return <LoadSpinner></LoadSpinner>
+      }
+
+
       !isFold ? chefs=chefs.slice(0, 6):chefs
       // chefs = chefs.slice(0, 6)
       return (

@@ -3,19 +3,22 @@ import React, { useState } from 'react';
 import { getShoppingCart, removeFromDb } from '../utilities/fakedb';
 import SectionTitle from './Shared/SectionTitle';
 import {  RiDeleteBin6Line } from "react-icons/ri";
+import LoadSpinner from './Shared/LoadSpinner';
 
 const Favourite = () => {
       const [cart, setCart] = useState([]);
       // const recipes = useLoaderData()
       const savedRecipes = getShoppingCart()
 
-      const { data: recipes = [],refetch} = useQuery({
+      const { data: recipes = [],isLoading} = useQuery({
             queryKey: ['recipes'],
             queryFn: async () => {
-                  const res = await fetch(`http://localhost:3000/recipes`);
+                  const res = await fetch(`https://dragon-delights-server.vercel.app/recipes`);
                   return res.json();
             }
       })
+
+      if(isLoading){return <LoadSpinner></LoadSpinner>}
 
       let favouriteRecipes = [];
       for (const id in savedRecipes) {

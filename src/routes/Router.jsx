@@ -8,6 +8,7 @@ import Register from "../pages/Login/Register";
 
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import ChefRecipes from "../pages/ChefRecipes/ChefRecipes";
+import PrivateRoute from "./PrivateRoute";
 
 const router= createBrowserRouter([
       {
@@ -25,7 +26,7 @@ const router= createBrowserRouter([
                   },
                   {
                         path:'favourite',
-                        element:<Favourite></Favourite>
+                        element:<PrivateRoute><Favourite></Favourite></PrivateRoute>
                   },
                   {
                         path:'login',
@@ -37,8 +38,8 @@ const router= createBrowserRouter([
                   },
                   {
                         path: 'chefInfo/:id',
-                        element:<ChefRecipes></ChefRecipes>,
-                        loader: ({params})=>fetch(`http://localhost:3000/chefs/${params.id}`)
+                        element:<PrivateRoute><ChefRecipes></ChefRecipes></PrivateRoute>,
+                        loader: ({params})=>fetch(`https://dragon-delights-server.vercel.app/chefs/${params.id}`)
                   }
             ]
       }

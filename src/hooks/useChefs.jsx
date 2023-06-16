@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 
 const useChefs=()=>{
-      const {data: chefs=[]}=useQuery({
+      const {data: chefs=[],isLoading}=useQuery({
             queryKey:['chefs'],
             queryFn:async()=>{
-                  const res= await fetch(`http://localhost:3000/chefs`);
+                  const res= await fetch(`https://dragon-delights-server.vercel.app/chefs`);
                   return res.json()
             }
       })
-      return [chefs]
+      return [chefs,isLoading]
 
 }
 

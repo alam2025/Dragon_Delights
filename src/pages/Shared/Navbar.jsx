@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import useAuth from '../../hooks/useAuth';
 const Navbar = () => {
-      const {user,logOut} =useAuth()
-      const navigate= useNavigate()
+      const [isHovering,setIsHovering] =useState(false)
+      const { user, logOut } = useAuth()
+      const navigate = useNavigate()
+      console.log(user);
 
-      
+
 
       const navList = <>
             <li><NavLink to='/'>Home</NavLink></li>
@@ -14,7 +16,7 @@ const Navbar = () => {
             <li><NavLink to='/favourite'>Favourite</NavLink></li>
       </>
       return (
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-base-100 md:px-[10%]">
                   <div className="navbar-start">
                         <div className="dropdown">
                               <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -32,12 +34,34 @@ const Navbar = () => {
                         </ul>
                   </div>
                   <div className="navbar-end">
-                        <ul className="menu menu-horizontal px-1">
+                        <ul className="menu menu-horizontal px-1 flex items-center">
                               {
-                                    user?<li><button onClick={()=>logOut().then(()=>navigate('/'))} className=' btn btn-outline btn-sm'>Logout</button></li>:<li><NavLink to='/login'>Login</NavLink></li>
+                                    user ? <>
+
+                                          <div className=" relative">
+                                                {/* <img className=" rounded-full w-[70px]" src={user.photoURL} alt="" /> */}
+                                                
+                                                      <img
+                                                            style={{ width: '60px', height: '60px' }}
+                                                            className=' bg-slate-600 mr-5 rounded-full'
+                                                            src={user?.photoURL}
+                                                            alt='profile'
+                                                            onMouseEnter={() => setIsHovering(true)}
+                                                            onMouseLeave={() => setIsHovering(false)}
+                                                      />
+                                             
+                                                <h6 style={{ width: '120px', marginLeft: '-30px', top: '30px', fontWeight: '700' }} className={`hover-display-name py-2 rounded  absolute text-white pl-2 text-sm bg-black ${isHovering ? ' block' : ' hidden'}`}>
+                                                      {user.displayName}
+                                                </h6>
+                                          </div>
+
+                                          <li><button onClick={() => logOut().then(() => navigate('/'))} className=' btn btn-outline btn-sm'>Logout</button></li>
+
+
+                                    </> : <li><NavLink to='/login'>Login</NavLink></li>
                               }
-                              
-                              
+
+
                         </ul>
 
                   </div>
