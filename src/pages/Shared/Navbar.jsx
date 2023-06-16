@@ -1,7 +1,12 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../assets/logo.png'
+import useAuth from '../../hooks/useAuth';
 const Navbar = () => {
+      const {user,logOut} =useAuth()
+      const navigate= useNavigate()
+
+      
 
       const navList = <>
             <li><NavLink to='/'>Home</NavLink></li>
@@ -28,7 +33,11 @@ const Navbar = () => {
                   </div>
                   <div className="navbar-end">
                         <ul className="menu menu-horizontal px-1">
-                              <li><NavLink to='/login'>Login</NavLink></li>
+                              {
+                                    user?<li><button onClick={()=>logOut().then(()=>navigate('/'))} className=' btn btn-outline btn-sm'>Logout</button></li>:<li><NavLink to='/login'>Login</NavLink></li>
+                              }
+                              
+                              
                         </ul>
 
                   </div>
