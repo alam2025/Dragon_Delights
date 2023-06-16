@@ -36,7 +36,7 @@ const Favourite = () => {
       console.log(favouriteRecipes);
 
       return (
-            <div className=' mb-24'>
+            <div className=' mb-24 my-container'>
                   <SectionTitle title={'your favourite recipes'}></SectionTitle>
 
                   <div className="overflow-x-auto">
