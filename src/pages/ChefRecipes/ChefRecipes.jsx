@@ -21,7 +21,7 @@ const ChefRecipes = () => {
       return (
             <div>
                   <ChefBanner key={chef.id} chef={chef}></ChefBanner>
-                  <ChefRecipesTable key={chef.id} chefRecipes={recipes}></ChefRecipesTable>
+                  <ChefRecipesTable key={chef.id} recipes={recipes}></ChefRecipesTable>
                   
             </div>
       );

@@ -1,10 +1,10 @@
 import React from 'react';
 import SectionTitle from '../pages/Shared/SectionTitle';
-
-const ChefRecipesTable = ({ chefRecipes }) => {
-      console.log(chefRecipes);
+import { AiOutlineHeart } from "react-icons/ai";
+const ChefRecipesTable = ({ recipes }) => {
+      console.log(recipes);
       return (
-            <div>
+            <div className=' mb-24'>
                   <SectionTitle title={'Recipes'}></SectionTitle>
 
 
@@ -14,139 +14,53 @@ const ChefRecipesTable = ({ chefRecipes }) => {
                               <thead>
                                     <tr>
                                           <th>
-                                                <label>
-                                                      <input type="checkbox" className="checkbox" />
-                                                </label>
+                                               #
                                           </th>
                                           <th>Name</th>
-                                          <th>Job</th>
-                                          <th>Favorite Color</th>
-                                          <th></th>
+                                          <th>Ingredients</th>
+                                          <th>Cooking Method</th>
+                                          <th>Ratng</th>
+                                          <th>Add to CART</th>
                                     </tr>
                               </thead>
                               <tbody>
-                                    {/* row 1 */}
-                                    <tr>
+                                    {recipes.map((recipe,index )=> <tr key={recipe.id}>
                                           <th>
-                                                <label>
-                                                      <input type="checkbox" className="checkbox" />
-                                                </label>
+                                               {index+1}
                                           </th>
                                           <td>
                                                 <div className="flex items-center space-x-3">
                                                       <div className="avatar">
                                                             <div className="mask mask-squircle w-12 h-12">
-                                                                  <img src="/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                                                                  <img src={recipe.food_image} alt={recipe.name} />
                                                             </div>
                                                       </div>
                                                       <div>
-                                                            <div className="font-bold">Hart Hagerty</div>
-                                                            <div className="text-sm opacity-50">United States</div>
+                                                            <div className="font-bold">{recipe.name}</div>
+                                                          
                                                       </div>
                                                 </div>
                                           </td>
                                           <td>
-                                                Zemlak, Daniel and Leannon
-                                                <br />
-                                                <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                                          </td>
-                                          <td>Purple</td>
-                                          <th>
-                                                <button className="btn btn-ghost btn-xs">details</button>
-                                          </th>
-                                    </tr>
-                                    {/* row 2 */}
-                                    <tr>
-                                          <th>
-                                                <label>
-                                                      <input type="checkbox" className="checkbox" />
-                                                </label>
-                                          </th>
-                                          <td>
-                                                <div className="flex items-center space-x-3">
-                                                      <div className="avatar">
-                                                            <div className="mask mask-squircle w-12 h-12">
-                                                                  <img src="/tailwind-css-component-profile-3@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                            </div>
-                                                      </div>
-                                                      <div>
-                                                            <div className="font-bold">Brice Swyre</div>
-                                                            <div className="text-sm opacity-50">China</div>
-                                                      </div>
-                                                </div>
+                                                {recipe.ingredients.map((r,index)=><ul key={r.index}>
+                                                      <li>{index+1}. {r}</li>
+
+                                                </ul>)}
                                           </td>
                                           <td>
-                                                Carroll Group
-                                                <br />
-                                                <span className="badge badge-ghost badge-sm">Tax Accountant</span>
+                                                <p >{recipe.cooking_method.slice(0,40)}...</p>
                                           </td>
-                                          <td>Red</td>
                                           <th>
-                                                <button className="btn btn-ghost btn-xs">details</button>
+                                                {recipe.rating}
                                           </th>
-                                    </tr>
-                                    {/* row 3 */}
-                                    <tr>
                                           <th>
-                                                <label>
-                                                      <input type="checkbox" className="checkbox" />
-                                                </label>
+                                               <button><AiOutlineHeart className=' hover:text-red-500' size={35}></AiOutlineHeart></button>
                                           </th>
-                                          <td>
-                                                <div className="flex items-center space-x-3">
-                                                      <div className="avatar">
-                                                            <div className="mask mask-squircle w-12 h-12">
-                                                                  <img src="/tailwind-css-component-profile-4@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                            </div>
-                                                      </div>
-                                                      <div>
-                                                            <div className="font-bold">Marjy Ferencz</div>
-                                                            <div className="text-sm opacity-50">Russia</div>
-                                                      </div>
-                                                </div>
-                                          </td>
-                                          <td>
-                                                Rowe-Schoen
-                                                <br />
-                                                <span className="badge badge-ghost badge-sm">Office Assistant I</span>
-                                          </td>
-                                          <td>Crimson</td>
-                                          <th>
-                                                <button className="btn btn-ghost btn-xs">details</button>
-                                          </th>
-                                    </tr>
-                                    {/* row 4 */}
-                                    <tr>
-                                          <th>
-                                                <label>
-                                                      <input type="checkbox" className="checkbox" />
-                                                </label>
-                                          </th>
-                                          <td>
-                                                <div className="flex items-center space-x-3">
-                                                      <div className="avatar">
-                                                            <div className="mask mask-squircle w-12 h-12">
-                                                                  <img src="/tailwind-css-component-profile-5@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                            </div>
-                                                      </div>
-                                                      <div>
-                                                            <div className="font-bold">Yancy Tear</div>
-                                                            <div className="text-sm opacity-50">Brazil</div>
-                                                      </div>
-                                                </div>
-                                          </td>
-                                          <td>
-                                                Wyman-Ledner
-                                                <br />
-                                                <span className="badge badge-ghost badge-sm">Community Outreach Specialist</span>
-                                          </td>
-                                          <td>Indigo</td>
-                                          <th>
-                                                <button className="btn btn-ghost btn-xs">details</button>
-                                          </th>
-                                    </tr>
+                                    </tr>)}
+
+
                               </tbody>
-                             
+
 
                         </table>
                   </div>
