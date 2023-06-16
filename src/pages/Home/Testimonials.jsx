@@ -18,7 +18,7 @@ const Testimonials = () => {
             }
       })
 
-      console.log(testimonials);
+      // console.log(testimonials);
       return (
             <div>
                  <SectionTitle title={'Client Testimonials'} subTitle={'What Out Client Say'}></SectionTitle>

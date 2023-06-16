@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
       return (
@@ -13,7 +14,7 @@ const ChefCard = ({ chef }) => {
 
                   </div>
                   <div className="mt-auto mb-3  justify-center items-center">
-                        <button className="btn btn-secondary">View Recipes</button>
+                       <Link to={`/chefInfo/${chef.id}`}> <button className="btn btn-secondary">View Recipes</button></Link>
                   </div>
             </div>
       );

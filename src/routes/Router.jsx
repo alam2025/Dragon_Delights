@@ -6,10 +6,14 @@ import Favourite from "../pages/Favourite";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Login/Register";
 
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import ChefRecipes from "../pages/ChefRecipes/ChefRecipes";
+
 const router= createBrowserRouter([
       {
             path:'/',
             element:<Main></Main>,
+            errorElement:<ErrorPage></ErrorPage>,
             children:[
                   {
                         path:'/',
@@ -30,6 +34,11 @@ const router= createBrowserRouter([
                   {
                         path:'register',
                         element:<Register></Register>
+                  },
+                  {
+                        path: 'chefInfo/:id',
+                        element:<ChefRecipes></ChefRecipes>,
+                        loader: ({params})=>fetch(`http://localhost:3000/chefs/${params.id}`)
                   }
             ]
       }

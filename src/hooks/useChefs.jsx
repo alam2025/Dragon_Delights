@@ -4,7 +4,7 @@ const useChefs=()=>{
       const {data: chefs=[]}=useQuery({
             queryKey:['chefs'],
             queryFn:async()=>{
-                  const res= await fetch(`/chefs.json`);
+                  const res= await fetch(`http://localhost:3000/chefs`);
                   return res.json()
             }
       })
