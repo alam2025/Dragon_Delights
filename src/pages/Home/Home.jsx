@@ -3,6 +3,7 @@ import Banner from './Banner';
 import ChefSection from './ChefSection';
 import Testimonials from './Testimonials';
 import Services from './Servises/Services';
+import Recipes from './PopularRecipes.jsx/Recipes';
 
 const Home = () => {
       return (
@@ -10,6 +11,7 @@ const Home = () => {
                   <Banner></Banner>
                   <Services></Services>
                   <ChefSection></ChefSection>
+                  <Recipes></Recipes>
 
                   <Testimonials></Testimonials>
             </div>

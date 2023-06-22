@@ -9,6 +9,7 @@ import Register from "../pages/Login/Register";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import ChefRecipes from "../pages/ChefRecipes/ChefRecipes";
 import PrivateRoute from "./PrivateRoute";
+import PopularRecipe from "../pages/PopularRecipe/PopularRecipe";
 
 const router= createBrowserRouter([
       {
@@ -40,6 +41,10 @@ const router= createBrowserRouter([
                         path: 'chefInfo/:id',
                         element:<PrivateRoute><ChefRecipes></ChefRecipes></PrivateRoute>,
                         loader: ({params})=>fetch(`https://dragon-delights-server.vercel.app/chefs/${params.id}`)
+                  },
+                  {
+                        path:'recipe/:id',
+                        element:<PrivateRoute><PopularRecipe></PopularRecipe></PrivateRoute>
                   }
             ]
       }

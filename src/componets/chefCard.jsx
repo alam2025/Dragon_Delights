@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 const ChefCard = ({ chef }) => {
       return (
             <div className=" flex flex-col shadow-md border rounded-md justify-center items-center">
-                  <LazyLoad height={400} width={400} threshold={0.95}>
-                        <figure><img className='w-[400px] h-[300px] rounded-md' src={chef.pictureUrl} alt="Shoes" /></figure>
+                  <LazyLoad  threshold={0.95}>
+                        <figure><img className='w-[400px] h-[300px] rounded-md  transition-transform duration-300 transform-gpu hover:scale-110 duration-1000' src={chef.pictureUrl} alt="Shoes" /></figure>
                   </LazyLoad>
                   <div className="card-body text-start">
                         <h2 className="card-title">{chef.chefName}</h2>

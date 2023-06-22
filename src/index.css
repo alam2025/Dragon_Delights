@@ -5,3 +5,12 @@
 .my-container{
       @apply w-[90%] md:w-[85%] mx-auto
 }
+
+.LazyLoad {
+      opacity: 0;
+      transition: all 1s ease-in-out;
+    }
+    
+    .is-visible {
+      opacity: 1;
+    }
